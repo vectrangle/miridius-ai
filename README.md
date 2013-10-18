@@ -47,3 +47,21 @@ Aggressive AI
     Ideas for improvements:
      - count enemy units on edges as belonging to the node they are going to land on, so that we defend nodes with incoming soldiers instead of only leaving 1 guy there
      - only leave enough units to defend a node as are needed to kill all enemy soldiers, send the rest into battle elsewhere
+
+
+Defensive AI
+--
+
+    Defensive AI
+    - Sends 1 unit to adjacent unclaimed nodes only
+    - Maintains node.size/2 units at each node
+    - Attacks with any extras
+
+    v1 Algorithm:
+    1. For each node that has >1 unit
+        a. For each edge:
+            i. ensure that we still have guys available
+            ii. if edge.Dst is unclaimed and has no units (friendly or enemy) on their way will beat me there, send 1 guy
+        b. If units > node.size/2, send (units - node.size/2) units towards nearest enemy or unclaimed node.
+            - Or if enough units are available to take over that node entirely, then send that many instead.
+
